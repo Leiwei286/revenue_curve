@@ -1,0 +1,13 @@
+{
+  "is_new_trade_date": true,
+  "trade_date": "20260506",
+  "position_count": 1,
+  "total_cost_value": 13825.8,
+  "total_market_value": 13734.0,
+  "total_pnl": -91.8,
+  "total_pnl_ratio": -0.00664,
+  "positions_file": "/home/runner/work/revenue_curve/revenue_curve/持仓录入.csv",
+  "detail_file": "/home/runner/work/revenue_curve/revenue_curve/portfolio_detail_latest.csv",
+  "history_file": "/home/runner/work/revenue_curve/revenue_curve/portfolio_history.csv",
+  "plot_file": "/home/runner/work/revenue_curve/revenue_curve/portfolio_pnl_ratio_curve.png"
+}
