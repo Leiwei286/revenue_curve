@@ -2,30 +2,23 @@ name: Portfolio Report
 
 on:
   workflow_dispatch:
-
   schedule:
-    # 北京时间 15:30
     - cron: "00 8 * * 1-5"
 
 jobs:
   build-and-send:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
-
     permissions:
       contents: write
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-          cache: "pip"
 
       - name: Install dependencies
         run: pip install -r requirements.txt
@@ -34,8 +27,7 @@ jobs:
         env:
           TUSHARE_TOKEN: ${{ secrets.TUSHARE_TOKEN }}
           SKIP_TIME_CHECK: "1"
-        run: |
-          python run_portfolio.py 2>&1 | tee portfolio.log
+        run: python run_portfolio.py
 
       - name: Send email
         env:
@@ -51,13 +43,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git add portfolio_history.csv \
-                  portfolio_detail_latest.csv \
-                  portfolio_pnl_ratio_curve.png \
-                  latest_summary.json
-
+          git add portfolio_history.csv portfolio_detail_latest.csv portfolio_pnl_ratio_curve.png latest_summary.json
           git diff --cached --quiet || git commit -m "Update portfolio report"
-
-          git pull --rebase origin main
-          git push origin HEAD:main
+          git push
