@@ -3,7 +3,7 @@ name: Portfolio Report
 on:
   workflow_dispatch:
   schedule:
-    - cron: "20 8 * * 1-5"
+    - cron: "00 8 * * 1-5"
 
 jobs:
   build-and-send:
