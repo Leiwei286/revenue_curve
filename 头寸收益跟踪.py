@@ -27,12 +27,6 @@ def build_api():
     return ts.pro_api()
 
 
-def should_run_now(now):
-    if SKIP_TIME_CHECK:
-        return True
-    return now.hour > 16 or (now.hour == 16 and now.minute >= 0)
-
-
 def load_positions():
     if not os.path.exists(POSITIONS_FILE):
         raise FileNotFoundError("Positions file not found: {}".format(POSITIONS_FILE))
@@ -211,11 +205,6 @@ def write_summary(snapshot, is_new_trade_date):
 
 
 def main():
-    now = datetime.now()
-    if not should_run_now(now):
-        print("Current time is earlier than 16:00. Skip update.")
-        return
-
     positions = load_positions()
     pro = build_api()
     trade_date = get_portfolio_trade_date(pro, positions, now)
