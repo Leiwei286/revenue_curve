@@ -205,6 +205,7 @@ def write_summary(snapshot, is_new_trade_date):
 
 
 def main():
+    now = datetime.now()
     positions = load_positions()
     pro = build_api()
     trade_date = get_portfolio_trade_date(pro, positions, now)
