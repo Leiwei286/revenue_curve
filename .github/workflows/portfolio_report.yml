@@ -26,7 +26,6 @@ jobs:
       - name: Run portfolio script
         env:
           TUSHARE_TOKEN: ${{ secrets.TUSHARE_TOKEN }}
-          SKIP_TIME_CHECK: "1"
         run: python run_portfolio.py
 
       - name: Send email
