@@ -1,5 +1,5 @@
 {
-  "is_new_trade_date": true,
+  "is_new_trade_date": false,
   "trade_date": "20260508",
   "position_count": 1,
   "total_cost_value": 16013.2,
